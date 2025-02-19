@@ -9,4 +9,6 @@ welcome = tk.Label(window, text ='''
 welcome.grid(row = 0, column=0, columnspan=3, pady=10)
 P = tk.Label(window, text = "Please enter Principal amount ")
 P.grid(row=1, column=0)
+p = tk.Entry(window)
+p.grid(row = 1, column=1, columnspan =2, padx= 10, pady = 10)
 window.mainloop()
