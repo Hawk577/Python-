@@ -47,16 +47,22 @@ def ci_calculate(pEntry, rEntry, tEntry, Error, result):
         res = (principal*((1+(rate/100))**time)-principal)
         result.config(text=f"Simple Interest is {res}")
     except:
-        Error.config(text="Please enter numbers only in the input fields !")
+        Error.config(window, text="Please enter numbers only in the input fields !")
         pEntry.delete(0, tk.END)
         tEntry.delete(0, tk.END)
         rEntry.delete(0, tk.END)
         principal = 0
         time = 0
         rate = 0
-
-def Reset():
-    pass
+resetBtn = tk.Button(window, text="Reset", command=lambda: Reset())
+def Reset(pEntry, tEntry, rEntry, principal, time, rate):
+        Error.config(window, text="")
+        pEntry.delete(0, tk.END)
+        tEntry.delete(0, tk.END)
+        rEntry.delete(0, tk.END)
+        principal = 0
+        time = 0
+        rate = 0
 window.title("basic CI and SI calculator")
 principalClear = tk.Button(window, text="clear", command =lambda: pEntry.delete(0, tk.END))
 rateClear = tk.Button(window, text="clear", command =lambda: rEntry.delete(0, tk.END))
@@ -72,7 +78,8 @@ rateClear.grid(row= 4, column=2,padx=10,pady=10)
 tStatement.grid(row=5,column=0,padx=10,pady=10)
 tEntry.grid(row=5, column=1,padx=10,pady=10)
 timeClear.grid(row=5, column=2,padx=10,pady=10)
-calculateBtn.grid(row=6, column=2, padx=10, pady=10)
+calculateBtn.grid(row=6, column=3, padx=10, pady=10)
+resetBtn.grid(row=6, column=2, padx=10, pady=10)
 result.grid(row=6, column=0, padx=10, pady=10)
 Error.grid(row=6, column=0, padx=10, pady=10)
 def calculate():
